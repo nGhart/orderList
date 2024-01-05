@@ -2,12 +2,13 @@ const axios = require('axios');
 const dotenv=require('dotenv')
 dotenv.config()
 
-function sendWhatsAppMessage (req, res) {
+function sendWhatsAppMessage (recipient) {
   const data = JSON.stringify({
     "messaging_product": "whatsapp",
-    "to": process.env.RECIPIENT_WAID,
+    "to": recipient,
     "type": "template",
     "template": {
+      //"name": "hello_world",
       "name": "order_received",
       "language": {
         "code": "en_US"
@@ -18,7 +19,8 @@ function sendWhatsAppMessage (req, res) {
   const config = {
     method: 'post',
     maxBodyLength: Infinity,
-    url: `https://graph.facebook.com/${process.env.VERSION}/${process.env.PHONE_NUMBER_ID}/messages`,
+   url: `https://graph.facebook.com/${process.env.VERSION}/${process.env.PHONE_NUMBER_ID}/messages`,
+   
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${process.env.ACCESS_TOKEN}`
@@ -26,13 +28,12 @@ function sendWhatsAppMessage (req, res) {
     data: data
   };
 
- axios.request(config)
+return axios.request(config)
     .then(response => {
-           res.status(response.status).json(response.data);
+      console.log("message delivered")
     })
-    .catch(error => {
-      console.error('Error sending WhatsApp message:', error.message);
-      res.status(500).json({ error: 'Internal Server Error' });
+    .catch((error) => {
+      console.log("test",error)
     });
 }
 
