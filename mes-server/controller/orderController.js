@@ -1,4 +1,5 @@
 const Order=require('../models/orderModel')
+const { sendWhatsAppMessage } = require('./messageController')
 
 const getAllOrders=async(req,res)=>{
     try {
@@ -15,9 +16,11 @@ const createOrder=async(req,res)=>{
        let newOrder=await Order.create(data) 
        if(!newOrder){
          res.status(500).json({msg:error.message})
-        
-       }
-       res.json({newOrder,msg:"Order added"})
+         return;
+              }
+              
+             await sendWhatsAppMessage(newOrder.contact)
+       res.json({newOrder,msg:"Order added",number:data.contact})
     } catch (error) {
         res.json({ msg: error.message });
     }
