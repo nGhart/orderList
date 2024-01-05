@@ -11,7 +11,7 @@ const orderRoutes=require('./routes/orderRoute')
 
 app.use(
   cors({
-    origin: "https://order-list-vert.vercel.app",
+    origin: "https://vercel.com/nghart/order-list",
     methods: ["GET", "POST", "DELETE", "PATCH"],
     allowedHeaders: ["Content-Type"],
   })
