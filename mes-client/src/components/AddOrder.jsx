@@ -9,14 +9,7 @@ const AddOrder = ({onAddOrder}) => {
   const [purchase,setPurchase]=useState('')
   const [total,setTotal]=useState('')
 
-  const handleMessage=()=>{
-        const headers = {
-          'Content-Type': 'application/json',
-                  'Authorization': `Bearer ${import.meta.env.VITE_ACCESS_TOKEN}`
-          }
-    axios.post("http://localhost:5000/api/v1/sendMessage",{headers}).then((res)=>console.log("Message Sent")).catch((error)=>console.log(error))
-  }    
-const handleSubmit=(e)=>{
+ const handleSubmit=(e)=>{
   const data={name,contact,purchase,total}
   e.preventDefault()
  
@@ -27,7 +20,6 @@ const handleSubmit=(e)=>{
       setContact('');
       setPurchase('');
       setTotal('');
-      handleMessage()
       onAddOrder(resp.data.newOrder);
     } else{
       toast.error(resp.data.msg);
