@@ -8,7 +8,7 @@ function sendWhatsAppMessage (req, res) {
     "to": process.env.RECIPIENT_WAID,
     "type": "template",
     "template": {
-      "name": "hello_world",
+      "name": "order_received",
       "language": {
         "code": "en_US"
       }
