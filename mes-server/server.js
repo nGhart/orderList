@@ -8,15 +8,15 @@ const userRoutes=require('./routes/userRoutes')
 const messageRoutes=require('./routes/messageRoutes')
 const orderRoutes=require('./routes/orderRoute')
 
+//app.use(cors())
 
-app.use(
-  cors({
+
+app.use(cors({
     origin: "https://order-list-vert.vercel.app",
     methods: ["GET", "POST", "DELETE", "PATCH"],
     allowedHeaders: ["Content-Type"],
-  })
-);
-https://order-list-vert.vercel.app
+  }))
+
 
 mongoose
   .connect(process.env.MONGO_URL, {
