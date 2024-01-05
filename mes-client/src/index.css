@@ -23,6 +23,9 @@ a:hover {
 }
 
 body {
+  background: rgb(2,0,36);
+background: linear-gradient(285deg, rgba(2,0,36,1) 0%, rgba(124,74,155,1) 35%, rgba(30,69,175,1) 100%);
+color: white;
   margin: 0;
   display: flex;
   place-items: center;
@@ -53,3 +56,27 @@ body {
   width: 100%;
   justify-content: center;
 }
+.landingContainer{
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.266);
+  
+  border-radius: 25px;
+  padding:30px;
+  height:400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 150px 50px;
+  }
+  .loginContainer{
+    text-align:center;
+    background-color: rgba(15, 1, 1, 0.266);
+    padding:20px;
+    border-radius: 25px;
+  }
+  .landingContainer h2{
+    margin-bottom: 50px;
+  }
+  .landingContainer h5{
+    margin-bottom: 50px;
+  }
